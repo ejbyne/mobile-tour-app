@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var Twit = require('twit');
+var fs = require('fs');
 
 var port = process.env.PORT || 3000;
 
@@ -29,8 +30,15 @@ var stream = auth.stream('statuses/filter', { locations: centralLondon });
 var count = 0
 
 stream.on('tweet', function (tweet) {
-  console.log(count ++);
-  console.log(tweet["text"]);
+
+  fs.appendFile("./tweets.txt", JSON.stringify(tweet) + "\n", function(err) {
+    if(err) {
+      console.log(err);
+    } else {
+      count++;
+      console.log('Saved tweet number ' + count + ': ' + tweet.text);
+    }
+  });
 });
 
 module.exports = server;
