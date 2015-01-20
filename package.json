@@ -1,0 +1,23 @@
+{
+  "name": "mobile-tour-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ejbyne/mobile-tour-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ejbyne/mobile-tour-app/issues"
+  },
+  "homepage": "https://github.com/ejbyne/mobile-tour-app",
+  "dependencies": {
+    "express": "^4.11.0",
+    "twit": "^1.1.19"
+  }
+}
