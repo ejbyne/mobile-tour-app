@@ -22,12 +22,15 @@ var auth = new Twit({
   access_token_secret:  process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-var centralLondon = ['51.445', '-0.207', '51.58', '-0.0197'];
+var centralLondon = ['-0.5654233', '51.2415153', '0.3109232', '51.7419679'];
 
 var stream = auth.stream('statuses/filter', { locations: centralLondon });
 
+var count = 0
+
 stream.on('tweet', function (tweet) {
-  console.log(tweet)
+  console.log(count ++);
+  console.log(tweet["text"]);
 });
 
 module.exports = server;
