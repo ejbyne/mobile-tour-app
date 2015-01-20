@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/ejbyne/mobile-tour-app",
   "dependencies": {
+    "body-parser": "^1.10.1",
+    "ejs": "^2.2.1",
     "express": "^4.11.0",
     "twit": "^1.1.19"
   }
