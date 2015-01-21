@@ -24,12 +24,17 @@
     mapOptions);
     var infoWindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
+
+    var image = 'img/cocktail.svg';
+
+
   
     $.get('/mapinfo', function(data) {
       data.results.forEach(function(place) {
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(place.geometry.location.lat, place.geometry.location.lng),
-          map: map
+          map: map,
+          icon: new google.maps.MarkerImage('img/cocktail.svg', null, null, null, new google.maps.Size(24,24))
         });
 
         google.maps.event.addListener(marker, 'click', function() {
