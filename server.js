@@ -48,23 +48,24 @@ server.listen(port, function() {
 
 var key = process.env.GOOGLE_PLACES_KEY;
 
-https.get("https://maps.googleapis.com/maps/api/place/radarsearch/json?location=51.517307,-0.073403&radius=200&types=bar&key=" + key, function(response) {
-  var buf = '';
-  response.setEncoding('utf8');
-  response.on('data', function(data) {
-    buf += data;
-  }).on('end', function() {
-    placesData = JSON.parse(buf);
-  });
-});
-
 app.get('/', function(request, response) {
   response.render('index');
 });
 
 app.get('/mapinfo', function(request, response) {
-  // console.log(placesData);
-  response.json(placesData);
+  var latitude = request.query.latitude;
+  var longitude = request.query.longitude;
+
+  https.get("https://maps.googleapis.com/maps/api/place/radarsearch/json?location=" + latitude + "," + longitude + "&radius=300&types=bar&key=" + key, function(apiResponse) {
+    var buf = '';
+    apiResponse.setEncoding('utf8');
+    apiResponse.on('data', function(data) {
+      buf += data;
+    }).on('end', function() {
+      placesData = JSON.parse(buf);
+      response.json(placesData);
+    });
+  });
 });
 
 app.get('/placeinfo/:place_id', function(request, response) {
