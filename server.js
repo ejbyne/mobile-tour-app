@@ -55,12 +55,17 @@ https.get("https://maps.googleapis.com/maps/api/place/radarsearch/json?location=
     buf += data;
   }).on('end', function() {
     placesData = JSON.parse(buf);
-    app.get('/', function(request, response) {
-      response.render('index', placesData);
-    });
-  })
-})
+  });
+});
 
+app.get('/', function(request, response) {
+  response.render('index');
+});
+
+app.get('/mapinfo', function(request, response) {
+  console.log(placesData);
+  response.json(placesData);
+});
     // fs.appendFile("./places.txt", data, function(err) {
     //       if(err) {
     //

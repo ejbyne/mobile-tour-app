@@ -11,10 +11,9 @@
     padding: 0px
   }
   </style>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
   <script>
-  var data = <%= placesData %>;
-  console.log(data);
   var map;
   function initialize() {
     var mapOptions = {
@@ -24,6 +23,16 @@
     map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
   }
+
+  $.get('/mapinfo', function(data) {
+    data.results.forEach(function(place) {
+      new google.maps.Marker({
+        position: new google.maps.LatLng(place.geometry.location.lat, place.geometry.location.lng),
+        map: map,
+        title: 'Hi there!'
+      });
+    });
+  });
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
