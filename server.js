@@ -63,8 +63,12 @@ app.get('/', function(request, response) {
 });
 
 app.get('/mapinfo', function(request, response) {
-  console.log(placesData);
+  // console.log(placesData);
   response.json(placesData);
+});
+
+app.get('/placeinfo/:place_id', function(request, response) {
+  console.log(request.params.place_id);
 });
     // fs.appendFile("./places.txt", data, function(err) {
     //       if(err) {

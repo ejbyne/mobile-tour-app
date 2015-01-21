@@ -26,13 +26,28 @@
 
   $.get('/mapinfo', function(data) {
     data.results.forEach(function(place) {
-      new google.maps.Marker({
+      var marker = new google.maps.Marker({
         position: new google.maps.LatLng(place.geometry.location.lat, place.geometry.location.lng),
         map: map,
         title: 'Hi there!'
       });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        openInfowindow(marker, place);
+      });
     });
   });
+
+  var openInfowindow = function(marker, place) {
+
+    $.get('/placeinfo/' + place.place_id);
+
+    var infowindow = new google.maps.InfoWindow({
+      content: 'place'
+    });
+  
+    infowindow.open(map, marker);
+  };
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
