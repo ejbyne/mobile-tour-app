@@ -56,7 +56,7 @@ app.get('/mapinfo', function(request, response) {
   var latitude = request.query.latitude;
   var longitude = request.query.longitude;
 
-  https.get("https://maps.googleapis.com/maps/api/place/radarsearch/json?location=" + latitude + "," + longitude + "&radius=300&types=bar&key=" + key, function(apiResponse) {
+  https.get("https://maps.googleapis.com/maps/api/place/radarsearch/json?location=" + latitude + "," + longitude + "&radius=1000&types=bar&key=" + key, function(apiResponse) {
     var buf = '';
     apiResponse.setEncoding('utf8');
     apiResponse.on('data', function(data) {
