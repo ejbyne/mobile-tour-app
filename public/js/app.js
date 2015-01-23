@@ -32,7 +32,7 @@ function initialize(position) {
 
   $.get( "/tweetinfo", function( data ) {
       var array = []
-      // console.log(data)
+      console.log(data)
       data.forEach(function(tweet){
       // createMarker(tweet);
         array.push(new google.maps.LatLng(tweet[0],

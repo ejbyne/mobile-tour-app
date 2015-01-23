@@ -4,12 +4,17 @@ var server = require('http').createServer(app);
 var Twit = require('twit');
 var fs = require('fs');
 var https = require('https');
-var fs = require ('fs')
+var fs = require ('fs');
+var mongoose = require('mongoose');
+var Tweet = require('./app/tweetsrepo.js');
+
 // var bodyParser = require('body-parser')
 
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 3000;
 
 var placesData;
+
+mongoose.connect("mongodb://localhost:27017/tweets_development");
 
 // app.set('view engine', 'ejs');
 
@@ -60,6 +65,10 @@ var twitterMarker = function(callback) {
     }
   }
 
+}
+
+var key = process.env.GOOGLE_PLACES_KEY;
+
   function latIsFine (latitude){
     return latitude >= 51.514492 && latitude <= 51.520853
   }
@@ -67,20 +76,24 @@ var twitterMarker = function(callback) {
   function longIsFine(longitude){
     return longitude >= -0.080306 && longitude <= -0.06515
   }
-}
-
-var key = process.env.GOOGLE_PLACES_KEY;
 
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/public/views/index.html');
 });
 
 app.get('/tweetinfo', function(request, response){
-  twitterMarker(function(err, markers){
-    if(err)
-      response.send(err)
-        response.json(markers)
+  var tweetsarray = [];
+  Tweet.find(function(err, tweets) {
+    tweets.forEach(function(tweet) {
+    if (tweet.details.geo != null && latIsFine(tweet.details.geo.coordinates[0]) && longIsFine(tweet.details.geo.coordinates[1]))
+      tweetsarray.push([tweet.details.geo.coordinates[0], tweet.details.geo.coordinates[1]]); 
+    }); 
+    response.json(tweetsarray);
   });
+ // twitterMarker(function(err, markers){
+ //    if(err)
+ //     response.send(err)
+ //      response.json(markers)
 });
 
 app.get('/mapinfo', function(request, response) {
