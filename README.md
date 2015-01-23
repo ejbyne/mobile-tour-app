@@ -49,8 +49,29 @@ Our second SCRUM produced a decision on the initial technologies we wanted
 to use in order to bring together the Skateboard version of the app. The
 features we discussed for the app were moulded into user stories. With all this
 information together we created [Kanban
-Cards](http://en.wikipedia.org/wiki/Kanban_%28development%29) and published on
-[Pivotal Tracker](https://www.pivotaltracker.com/n/projects/1251864). 
+Cards](http://en.wikipedia.org/wiki/Kanban_%28development%29). 
+
+### Project Pivot
+
+Subsequent SCRUMS and consultations with coaches revealed that the initial
+concept was flawed. A combination of pre-existing apps in the market, and an
+unclear client base brought us to a decision to pivot. 
+
+We have spend much of this week pivoting on various ideas, and have settled
+into a concept that we think is interesting, novel and at least a little
+useful. 
+
+The new idea is based around an idea of determining venue popularity based on
+tweet frequency from its location. As such we have needed to acquire a large
+amount of data in order to have a large enough sample to reliably plot. We are
+recording all the tweets from the public twitter stream (not Firehose). As such 
+the only part of this project that will remain in its entirety is our data
+recording Node server that has been deployed to an EC2 instance. We intend to
+get 7 days of tweet data before our presentation deadline. 
+
+Due to the nature of our development processes this week, we have been spiking
+and not testing, so now that we have a picture of what we are heading towards
+we are going to start afresh with a new repo, using TDD and BDD from inception. 
 
 ---
 
