@@ -66,32 +66,26 @@ Due to the nature of our development processes this week, now that we have a pic
 
 ### Development Ideas
 
-####Version 1.0 - Skateboard:
+#### Version 1.0 - Skateboard:
 
 - Responsive Webpage for Mobile
 - Show your position on a map
 - Show pins for POIs on map (Google POIs)
 
----
-
-####Version 2.0 - Scooter: 
+#### Version 2.0 - Scooter: 
 
 - Pins to be clickable and show name + additional data (Wiki API)
 - Welcome screen
 - Information displayed in half screen or full screen
 - Picture of POI in information
 
----
-
-####Version 3.0 - Bicycle:
+#### Version 3.0 - Bicycle:
 
 - Text to voice conversion of POI information
 - Make it an app
 - Add notes to the places you have visited
 
----
-
-####Version 4.0 - Car:
+#### Version 4.0 - Car:
 
 - Interactive Map showing current location
 - Surround Points of interest shown on map
@@ -114,5 +108,3 @@ Due to the nature of our development processes this week, now that we have a pic
 - Show public transport routes to a selected point of interest
 - Choosing points of interest to create route for you.
 - More verbose text about points of interest
-
----
